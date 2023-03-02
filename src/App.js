@@ -6,10 +6,10 @@ import Header from "./components/Header/Header";
 
 const tg = window.Telegram.WebApp;
 function App() {
-  const {user, onClose} = useTelegram();
+  const {onClose} = useTelegram();
     useEffect(() => {
         tg.ready();
-    }, [])
+    }, []);
   return (
     <div className="App">
         <Header />
