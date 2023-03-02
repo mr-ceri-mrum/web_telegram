@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body{
+  background: var(--tg-color-scheme);
+  color: var(--tg-viewport-height);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
