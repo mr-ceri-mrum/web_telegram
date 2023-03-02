@@ -2,9 +2,9 @@
   text-align: center;
 }
 
-body{
-  background: var(--tg-color-scheme);
-  color: var(--tg-viewport-height);
+body {
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
 }
 
 .App-logo {
