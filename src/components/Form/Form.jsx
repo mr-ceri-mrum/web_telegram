@@ -3,8 +3,8 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () =>{
-    const [country, setCountry] = useState('');
-    const [street, setStreet] = useState('');
+    const [country] = useState('');
+    const [street] = useState('');
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
 
@@ -15,20 +15,20 @@ const Form = () =>{
             subject
         }
         tg.sendData(JSON.stringify(data));
-    }, [country, street, subject])
+    }, [country, street, subject, tg])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
         return () => {
             tg.offEvent('mainButtonClicked', onSendData)
         }
-    }, [onSendData])
+    }, [onSendData, tg])
 
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         })
-    }, [])
+    }, [tg.MainButton])
 
     useEffect(() => {
         if(!street || !country) {
@@ -36,15 +36,15 @@ const Form = () =>{
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])
+    }, [country, street, tg.MainButton])
 
-    const onChangeCountry = (e) => {
+    /*const onChangeCountry = (e) => {
         setCountry(e.target.value)
     }
 
     const onChangeStreet = (e) => {
         setStreet(e.target.value)
-    }
+    }*/
 
     const onChangeSubject = (e) => {
         setSubject(e.target.value)
